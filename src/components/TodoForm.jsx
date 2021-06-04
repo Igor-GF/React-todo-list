@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import uuid from 'react-uuid';
 
 const TodoForm = ({ addTodo }) => {
 
@@ -16,13 +17,13 @@ const TodoForm = ({ addTodo }) => {
     e.preventDefault();
 
     if (todo.task.trim()) {
-      addTodo({ ...todo, id: Math.random()*1000});
+      addTodo({ ...todo, id: uuid()});
       setTodo({ ...todo, task: "" });
     }
   }
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className="form-container" onSubmit={submitHandler}>
       <input
         name="task"
         type="text"
